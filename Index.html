@@ -1,1 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#0b0d12">
+  <title>KALKI — Personal AI Assistant</title>
+  <link rel="stylesheet" href="style.css?v=gemini-key-settings-1">
+  <link rel="stylesheet" href="everyday-tools.css?v=kalki-1">
+  <link rel="stylesheet" href="layout-fix.css?v=two-mode-1">
+  <link rel="stylesheet" href="overrides.css?v=zapia-unified-1">
+  <link rel="stylesheet" href="professional-ui.css?v=scroll-fix-1">
+  <link rel="stylesheet" href="motion-enhancements.css?v=0.1.0">
+  <link rel="stylesheet" href="kalki-effects.css?v=3">
+</head>
+<body>
+  <div class="app-shell">
 
+    <header class="app-header">
+      <button class="icon-button menu-button" type="button" aria-label="Open menu">☰</button>
+      <div class="brand-lockup">
+        <div class="brand-mark" aria-hidden="true"><img src="1789578396977-559ec457.jpg" alt="KALKI"></div>
+        <div><h1>KALKI</h1><p><span class="status-dot"></span> Voice assistant · talk or type</p></div>
+      </div>
+      <button id="clear-btn" class="icon-button" type="button" aria-label="Clear conversation">⌫</button>
+    </header>
+
+    <main class="assistant-main">
+      <section class="welcome" aria-label="Welcome">
+        <div class="welcome-orb">✦</div>
+        <p class="eyebrow">YOUR AI COMPANION</p>
+        <h2>How can I help<br><em>today?</em></h2>
+        <p class="welcome-copy">Talk with KALKI hands-free, or type a message. Tap the microphone to start or stop voice conversation.</p>
+
+        <div class="suggestions" aria-label="Suggestions">
+          <button type="button" data-fill="Help me plan my day">Plan my day <span>→</span></button>
+          <button type="button" data-fill="Search the web for ">Search the web <span>→</span></button>
+        </div>
+
+        <section id="everyday-tools" class="everyday-tools" aria-label="KALKI Everyday Tools">
+          <div class="tools-heading">
+            <strong>KALKI Everyday Tools</strong>
+            <small>Tap to prepare a command — nothing runs automatically.</small>
+          </div>
+          <div class="tool-grid">
+            <button type="button" data-tool-command="Tell me the time">🕒 Time</button>
+            <button type="button" data-tool-command="Tell me a joke">😄 Joke</button>
+            <button type="button" data-tool-command="Give me motivation">✨ Motivation</button>
+            <button type="button" data-tool-command="Roll a dice">🎲 Dice</button>
+            <button type="button" data-tool-command="Flip a coin">🪙 Coin</button>
+            <button type="button" data-tool-command="Generate a strong password">🔐 Password</button>
+            <button type="button" data-tool-command="Open YouTube">▶ YouTube</button>
+            <button type="button" data-tool-command="Open Google">🔎 Google</button>
+          </div>
+        </section>
+      </section>
+
+      <section id="chat" class="chat" aria-live="polite" aria-label="Conversation"></section>
+    </main>
+
+    <div class="composer-wrap">
+      <div class="composer" role="group" aria-label="Message composer">
+        <button id="attach-btn" class="composer-icon" type="button" aria-label="Attach a file" aria-expanded="false">＋</button>
+        <input id="img-input" type="file" accept="image/*,.pdf,.txt" hidden>
+        <input id="msg" type="text" placeholder="Talk or message KALKI..." autocomplete="off" enterkeyhint="send">
+        <button id="mic-btn" class="composer-icon voice-conversation-toggle" type="button" aria-label="Start voice conversation" title="Start voice conversation" aria-pressed="false">🎙</button>
+        <button id="send" class="send-button" type="button" aria-label="Send message">↑</button>
+        <div id="attachment-menu" class="attachment-menu" hidden role="menu">
+          <button id="cam-btn" type="button" role="menuitem">📷 Take or choose an image</button>
+          <button id="file-btn" type="button" role="menuitem">📎 Choose a file</button>
+        </div>
+      </div>
+      <p class="safe-note"><span>✦</span> KALKI only takes action when you explicitly ask.</p>
+      <p id="voice-mode-status" class="voice-mode-status" role="status" aria-live="polite">Tap 🎙 to start a voice conversation. Tap again to stop.</p>
+    </div>
+  </div>
+
+  <aside class="side-sheet" aria-label="Navigation">
+    <button class="sheet-close" type="button" aria-label="Close menu">×</button>
+    <p class="eyebrow">KALKI</p>
+    <h2>Assistant</h2>
+
+    <button class="sheet-link" type="button">＋ New conversation</button>
+    <a class="sheet-link" href="#everyday-tools" id="tools-menu-link">⌁ Tools</a>
+    <button id="settings-toggle" class="sheet-link" type="button" aria-expanded="false">⚙ Settings</button>
+
+    <section id="voice-settings" class="voice-settings" hidden aria-label="Settings">
+
+      <section class="voice-output-settings" aria-labelledby="tts-settings-title">
+        <div class="voice-setting-heading">
+          <strong id="tts-settings-title">Voice conversation</strong>
+          <small>Choose a consistent voice and how KALKI listens.</small>
+        </div>
+
+        <label class="api-key-label" for="tts-voice-select">KALKI speaking voice</label>
+        <select id="tts-voice-select" class="setting-field-input">
+          <option value="">Automatic (Telugu / English)</option>
+        </select>
+
+        <label class="api-key-label" for="voice-input-language">I will speak in</label>
+        <select id="voice-input-language" class="setting-field-input">
+          <option value="en-IN">English (India)</option>
+          <option value="te-IN">Telugu (తెలుగు)</option>
+          <option value="hi-IN">Hindi (हिन्दी)</option>
+          <option value="en-US">English (US)</option>
+        </select>
+
+        <div class="voice-setting-row">
+          <div>
+            <strong>Read replies aloud</strong>
+            <small>KALKI speaks every new reply automatically.</small>
+          </div>
+          <label class="switch">
+            <input id="tts-auto-read" type="checkbox">
+            <span></span>
+            <span class="sr-only">Read replies aloud automatically</span>
+          </label>
+        </div>
+
+        <button id="tts-stop-button" class="voice-stop" type="button">⏹ Stop speaking</button>
+        <p id="tts-status" class="voice-status" role="status" aria-live="polite"></p>
+        <p class="voice-disclaimer">Voice quality depends on the voices installed on your phone. Say “stop” or “aapu” to end voice conversation.</p>
+      </section>
+
+      <section id="gemini-api-settings" class="gemini-api-settings" aria-labelledby="gemini-key-title">
+        <div class="voice-setting-heading">
+          <strong id="gemini-key-title">Gemini API key</strong>
+          <small>Stored only in this browser. Never share it.</small>
+        </div>
+        <label class="api-key-label" for="gemini-api-key">API key</label>
+        <input id="gemini-api-key" class="setting-field-input" type="password" placeholder="AIza..." autocomplete="off" spellcheck="false">
+        <div class="settings-actions">
+          <button id="save-api-key" type="button">Save key</button>
+          <button id="clear-api-key" class="quiet" type="button">Clear</button>
+        </div>
+        <p id="gemini-key-status" class="settings-status" role="status" aria-live="polite">No key saved on this device.</p>
+      </section>
+
+    </section>
+  </aside>
+
+  <script src="script.js"></script>
+  <script>
+    // Suggestion chips and everyday-tool buttons only prepare the command in the input box.
+    document.querySelectorAll("[data-fill], [data-tool-command]").forEach(function (btn) {
+      btn.addEventListener("click", function () {
+        var box = document.getElementById("msg");
+        box.value = btn.dataset.fill || btn.dataset.toolCommand;
+        box.focus();
+      });
+    });
+  </script>
+</body>
+</html>
