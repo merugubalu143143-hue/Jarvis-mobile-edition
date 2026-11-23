@@ -1,1 +1,56 @@
 
+/* ===== KALKI extra styles (load LAST) ===== */
+
+/* Logo */
+.brand-mark{width:36px;height:36px;border-radius:11px;overflow:hidden;flex:0 0 36px;border:1px solid #4e467c;box-shadow:0 5px 18px #8275e133}
+.brand-mark img{display:block;width:100%;height:100%;object-fit:cover}
+
+/* Chat start ayyaka welcome hide */
+body.has-conversation .welcome{display:none}
+body.has-conversation .assistant-main{padding-top:14px}
+.assistant-main{padding-bottom:170px}
+
+/* Messages */
+.msg{position:relative;line-height:1.55;animation:kalkiPop .25s ease}
+@keyframes kalkiPop{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
+.speak-button{display:inline-block;margin-top:9px;padding:5px 10px;border:1px solid #4e467c;border-radius:8px;background:transparent;color:#c0b8ff;font-size:11px}
+.speak-button:hover,.speak-button[aria-pressed="true"]{background:#292542;color:#fff}
+
+/* Composer */
+.composer{position:relative}
+.attachment-menu{position:absolute;left:0;bottom:calc(100% + 8px);min-width:230px;padding:6px;border:1px solid var(--line);border-radius:14px;background:#171a22;box-shadow:0 14px 36px #000a;z-index:6}
+.attachment-menu[hidden]{display:none}
+.attachment-menu button{display:block;width:100%;padding:11px 12px;border-radius:9px;background:transparent;color:#d8dbe3;font-size:13px;text-align:left}
+.attachment-menu button:hover{background:#262a35}
+
+/* Mic listening state */
+.voice-conversation-toggle.is-listening{background:#3a1f2b;color:#ff8fa3;box-shadow:0 0 0 0 #ff5d7a66;animation:kalkiPulse 1.4s infinite}
+@keyframes kalkiPulse{0%{box-shadow:0 0 0 0 #ff5d7a77}100%{box-shadow:0 0 0 12px #ff5d7a00}}
+.voice-mode-status{text-align:center;margin-top:5px;color:var(--muted);font-size:11px;min-height:16px}
+
+/* Suggestions + Everyday tools */
+.everyday-tools{max-width:520px;margin:26px auto 0;padding:14px;border:1px solid var(--line);border-radius:16px;background:var(--surface);text-align:left}
+.tools-heading strong{display:block;font-size:13px}
+.tools-heading small{display:block;margin-top:3px;color:var(--muted);font-size:10px}
+.tool-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-top:12px}
+.tool-grid button{padding:10px 4px;border:1px solid var(--line);border-radius:10px;background:var(--surface-2);color:#d4d8e0;font-size:11px;transition:.15s}
+.tool-grid button:hover,.tool-grid button:active{border-color:var(--accent-2);background:#211e35;color:#fff}
+@media(max-width:430px){.tool-grid{grid-template-columns:repeat(2,1fr)}}
+
+/* Side sheet + settings */
+.side-sheet{overflow-y:auto;overscroll-behavior:contain}
+.voice-output-settings,.gemini-api-settings{padding:4px 0 14px}
+.gemini-api-settings{margin-top:6px;padding-top:14px;border-top:1px solid var(--line)}
+.voice-setting-heading strong{display:block;font-size:13px}
+.voice-setting-heading small{display:block;margin-top:2px;color:var(--muted);font-size:10px}
+.api-key-label{display:block;margin-top:12px;color:#cdd1da;font-size:11px}
+.setting-field-input{display:block;width:100%;margin-top:6px;padding:9px 10px;border:1px solid var(--line);border-radius:9px;background:var(--surface-2);color:var(--text);font-size:12px;outline:none}
+.setting-field-input:focus{border-color:var(--accent)}
+.voice-setting-row{margin-top:14px}
+.settings-status{margin-top:8px;color:var(--muted);font-size:10px;line-height:1.4}
+.settings-status.is-saved{color:var(--green)}
+.settings-status.is-error{color:#ff8a8a}
+.voice-status{min-height:14px}
+
+/* Reduced motion */
+@media(prefers-reduced-motion:reduce){.msg,.voice-conversation-toggle.is-listening{animation:none}}
